@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS KENARI - Kelurahan Nagasari</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kenari: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#0d5c3a',
+                            dark: '#073823'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- SheetJS CDN for Excel Export -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    
+    <!-- QRCode.js & Html5-QRCode CDNs for Barcode / QR Scanning & Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .banner-gradient {
+            background: linear-gradient(135deg, #0d5c3a 0%, #15803d 50%, #16a34a 100%);
+        }
+        /* Custom scrollbar styling */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-full flex flex-col text-slate-800">
+
+    <!-- HERO HEADER -->
+    <header class="banner-gradient text-white shadow-lg relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 py-5 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4 text-center md:text-left">
+                    <!-- LOGO GPS KENARI -->
+                    <div class="w-20 h-20 bg-white rounded-full p-1 flex items-center justify-center shadow-md shrink-0 border-2 border-emerald-400">
+                        <svg viewBox="0 0 200 200" class="w-full h-full">
+                            <circle cx="100" cy="100" r="96" fill="#0d5c3a" />
+                            <circle cx="100" cy="100" r="88" fill="none" stroke="#ffffff" stroke-width="3" />
+                            <circle cx="100" cy="100" r="82" fill="none" stroke="#22c55e" stroke-width="2" />
+                            <path id="textArcTop" d="M 25 100 A 75 75 0 0 1 175 100" fill="none" />
+                            <text font-size="11" font-weight="900" fill="#ffffff" letter-spacing="1.5">
+                                <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">GERAKAN PEDULI SAMPAH</textPath>
+                            </text>
+                            <path id="textArcBottom" d="M 175 100 A 75 75 0 0 1 25 100" fill="none" />
+                            <text font-size="11" font-weight="900" fill="#ffffff" letter-spacing="1">
+                                <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">KELURAHAN NAGASARI</textPath>
+                            </text>
+                            <circle cx="100" cy="100" r="58" fill="#ffffff" />
+                            <path d="M100 52 C90 52 85 62 85 70 C85 80 100 85 100 85 C100 85 115 80 115 70 C115 62 110 52 100 52 Z" fill="#22c55e"/>
+                            <path d="M85 92 C75 92 70 100 78 108 C86 116 100 105 100 105 C100 105 114 116 122 108 C130 100 125 92 115 92 C105 92 100 100 100 100 C100 100 95 92 85 92 Z" fill="#0284c7" stroke="#0d5c3a" stroke-width="2"/>
+                            <circle cx="92" cy="115" r="3" fill="#0d5c3a"/>
+                            <path d="M92 118 L92 126 M92 121 L96 123 M92 121 L88 123 M92 126 L90 131 M92 126 L94 131" stroke="#0d5c3a" stroke-width="2"/>
+                            <rect x="99" y="122" width="6" height="8" rx="1" fill="#0d5c3a"/>
+                            <text x="100" y="143" font-size="16" font-weight="900" fill="#0d5c3a" text-anchor="middle">GPS</text>
+                            <text x="100" y="152" font-size="8" font-weight="800" fill="#15803d" letter-spacing="1" text-anchor="middle">KENARI</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="inline-block bg-emerald-800/80 text-emerald-200 text-xs px-2.5 py-0.5 rounded-full font-semibold mb-1 border border-emerald-600/40">
+                            Aplikasi Pelayanan & Pengaduan Digital
+                        </span>
+                        <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight">
+                            GERAKAN PEDULI SAMPAH KELURAHAN NAGASARI
+                        </h1>
+                        <p class="text-xs sm:text-sm text-emerald-100 font-medium">
+                            (GPS KENARI) • Kecamatan Karawang Barat, Kabupaten Karawang
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/20 flex items-center gap-4 shrink-0 text-center">
+                    <div>
+                        <div class="text-[11px] text-emerald-100 font-medium">Total Sampah Terpilah</div>
+                        <div id="statTotalKg" class="text-xl font-black text-yellow-300">0.0 Kg</div>
+                    </div>
+                    <div class="h-8 w-px bg-white/20"></div>
+                    <div>
+                        <div class="text-[11px] text-emerald-100 font-medium">Penanganan Selesai</div>
+                        <div id="statCompletedReports" class="text-xl font-black text-white">0 / 0</div>
+                    </div>
+                    
+                    <div class="h-8 w-px bg-white/20"></div>
+                    <button onclick="openQrAksesModal()" class="bg-yellow-400 hover:bg-yellow-300 text-emerald-950 px-3 py-2 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-md transition transform active:scale-95">
+                        <i class="fa-solid fa-qrcode text-base"></i> Cetak / Pindai QR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="flex space-x-1 sm:space-x-3 overflow-x-auto py-2 no-scrollbar">
+                <button onclick="switchTab('lapor')" id="tab-lapor" class="nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap bg-kenari-900 text-white shadow-sm">
+                    <i class="fa-solid fa-paper-plane"></i> Form Lapor Sampah
+                </button>
+                <button onclick="switchTab('tracking')" id="tab-tracking" class="nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-list-check"></i> Status Laporan <span id="badgePendingCount" class="bg-amber-500 text-white text-[10px] px-1.5 py-0.2 rounded-full">0</span>
+                </button>
+                <button onclick="switchTab('analytics')" id="tab-analytics" class="nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-chart-pie"></i> Capaian & Data Cloud
+                </button>
+                <button onclick="switchTab('edukasi')" id="tab-edukasi" class="nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-seedling"></i> Edukasi Pilah Sampah
+                </button>
+                <button onclick="switchTab('operator')" id="tab-operator" class="nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap text-amber-800 hover:bg-amber-50 border border-amber-200">
+                    <i class="fa-solid fa-user-gear"></i> Portal Operator (Admin)
+                </button>
+                <button onclick="switchTab('manual')" id="tab-manual" class="nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 whitespace-nowrap text-blue-800 hover:bg-blue-50 border border-blue-200">
+                    <i class="fa-solid fa-book-open"></i> Petunjuk & Broadcast
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+
+        <!-- ==================== TAB 1: FORM LAPOR SAMPAH (WARGA) ==================== -->
+        <section id="sec-lapor" class="tab-content block">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Form Box -->
+                <div class="lg:col-span-7 bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-kenari-800 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900">Formulir Pengaduan Sampah Warga</h2>
+                            <p class="text-xs text-slate-500">Laporkan penumpukan sampah liar di wilayah Kelurahan Nagasari</p>
+                        </div>
+                    </div>
+
+                    <form id="formPengaduan" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        
+                        <!-- Quick QR Scanner Banner -->
+                        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex flex-col sm:flex-row items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 text-emerald-900 text-xs font-semibold">
+                                <i class="fa-solid fa-camera-retro text-emerald-600 text-base"></i>
+                                <span>Ada Barcode/QR Code di TPS / Pos Ronda?</span>
+                            </div>
+                            <button type="button" onclick="openQrScanner()" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1.5 transition">
+                                <i class="fa-solid fa-expand"></i> Pindai QR Lokasi
+                            </button>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Pelapor <span class="text-red-500">*</span></label>
+                            <input type="text" id="namaPelapor" required placeholder="Contoh: Pak Ahmad Syah"
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-kenari-500 focus:border-kenari-500 outline-none">
+                        </div>
+
+                        <!-- Wilayah Dropdown & RT/RW 3-Digit Inputs -->
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                            <div class="sm:col-span-6">
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Wilayah / Lingkungan <span class="text-red-500">*</span></label>
+                                <select id="wilayahPelapor" required
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-kenari-500 focus:border-kenari-500 outline-none">
+                                    <option value="">-- Pilih Wilayah --</option>
+                                    <option value="Krajan Barat">Krajan Barat</option>
+                                    <option value="Krajan Timur">Krajan Timur</option>
+                                    <option value="Sadamalun I">Sadamalun I</option>
+                                    <option value="Sadamalun III">Sadamalun III</option>
+                                    <option value="Santiong Utara">Santiong Utara</option>
+                                    <option value="Santiong Selatan">Santiong Selatan</option>
+                                    <option value="Babakan Cianjur">Babakan Cianjur</option>
+                                    <option value="Dipo Barat">Dipo Barat</option>
+                                    <option value="Dipo Tengah">Dipo Tengah</option>
+                                    <option value="Dipo Timur">Dipo Timur</option>
+                                    <option value="Guro I">Guro I</option>
+                                    <option value="Karang Anyar">Karang Anyar</option>
+                                    <option value="Kepuh Wareng">Kepuh Wareng</option>
+                                    <option value="Kepuh Tengah">Kepuh Tengah</option>
+                                    <option value="Kepuh Nagasari">Kepuh Nagasari</option>
+                                    <option value="Perum Green Garden">Perum Green Garden</option>
+                                    <option value="Perum Bhakti Praja">Perum Bhakti Praja</option>
+                                </select>
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">RT (3 Digit) <span class="text-red-500">*</span></label>
+                                <input type="text" id="rtPelapor" required maxlength="3" placeholder="001" pattern="\d{1,3}"
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-kenari-500 focus:border-kenari-500 outline-none font-mono">
+                            </div>
+
+                            <div class="sm:col-span-3">
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">RW (3 Digit) <span class="text-red-500">*</span></label>
+                                <input type="text" id="rwPelapor" required maxlength="3" placeholder="002" pattern="\d{1,3}"
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-kenari-500 focus:border-kenari-500 outline-none font-mono">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Lokasi Detail / Patokan <span class="text-red-500">*</span></label>
+                            <input type="text" id="lokasiDetail" required placeholder="Contoh: Depan Pos Ronda Gang Mukti, dekat pohon beringin"
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-kenari-500 focus:border-kenari-500 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Kondisi Sampah & Catatan <span class="text-red-500">*</span></label>
+                            <textarea id="kondisiSampah" rows="3" required placeholder="Contoh: Penumpukan sampah plastik dan sisa makanan meluber ke jalan utama..."
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-kenari-500 focus:border-kenari-500 outline-none"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Foto Lokasi (Foto Awal)</label>
+                            <div class="flex items-center gap-3">
+                                <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 border border-slate-300 px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-camera"></i> Pilih Foto Awal
+                                    <input type="file" id="fotoBeforeInput" accept="image/*" class="hidden" onchange="previewImage(this, 'beforePreview')">
+                                </label>
+                                <span id="fotoFileName" class="text-xs text-slate-500 italic">Belum ada foto dipilih</span>
+                            </div>
+                            <div id="beforePreview" class="mt-2 hidden">
+                                <img src="" alt="Preview Foto Awal" class="h-28 rounded-lg object-cover border border-slate-200 shadow-sm cursor-pointer" onclick="openImageModal(this.src, 'Pratinjau Foto Awal')">
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-kenari-900 hover:bg-kenari-800 text-white font-bold py-3.5 px-4 rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-3 text-sm">
+                                <i class="fa-brands fa-whatsapp text-xl text-green-400"></i> Kirim Laporan ke WA +628978833227
+                            </button>
+                            <p class="text-[11px] text-slate-500 text-center mt-2">
+                                *Sistem akan merekam laporan dan mengarahkan ke WhatsApp Center Kelurahan Nagasari (+62 897-8833-227).
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-gradient-to-br from-emerald-900 to-kenari-800 text-white rounded-2xl p-6 shadow-sm border border-emerald-700">
+                        <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-yellow-400"></i> WhatsApp Center Resmi
+                        </h3>
+                        <div class="text-sm font-extrabold text-yellow-300 bg-black/20 px-3.5 py-2 rounded-xl inline-flex items-center gap-2 mb-3 border border-white/10">
+                            <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i> +62 897-8833-227
+                        </div>
+                        <p class="text-xs text-emerald-100 leading-relaxed mb-3">
+                            Setiap pengaduan warga diproses oleh Operator WhatsApp Center dalam maksimal <strong>15 menit</strong> dan diteruskan ke Armada Lapangan.
+                        </p>
+                        <div class="bg-emerald-950/50 rounded-xl p-3 text-[11px] text-emerald-200 border border-emerald-700/50 space-y-1">
+                            <div>• <strong class="text-white">Formulir Otomatis:</strong> Data langsung tersimpan ke cloud.</div>
+                            <div>• <strong class="text-white">Transparansi Timbangan:</strong> Warga dapat memantau berat sampah terpilah.</div>
+                        </div>
+                    </div>
+
+                    <!-- Live WhatsApp Format Preview Box -->
+                    <div class="bg-slate-900 text-slate-200 rounded-2xl p-5 font-mono text-xs shadow-sm border border-slate-800">
+                        <div class="text-slate-400 text-[10px] font-sans font-bold uppercase tracking-wider mb-2 flex justify-between items-center">
+                            <span>Pratinjau Format WA Otomatis</span>
+                            <span class="text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> #LAPOR SAMPAH _ GPS KENARI</span>
+                        </div>
+                        <div id="waPreviewText" class="whitespace-pre-wrap bg-slate-950 p-3 rounded-xl border border-slate-800 text-slate-300 text-[11px] leading-relaxed">
+Isi formulir di sebelah kiri untuk melihat format pesan WhatsApp...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: STATUS & TRACKER ADUAN ==================== -->
+        <section id="sec-tracking" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Daftar Status Pengaduan Warga</h2>
+                        <p class="text-xs text-slate-500">Pantau transparansi penanganan sampah liar oleh tim kebersihan lapangan</p>
+                    </div>
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <select id="filterStatus" onchange="renderReportsTable()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold outline-none">
+                            <option value="ALL">Semua Status</option>
+                            <option value="Dalam Proses">Dalam Proses</option>
+                            <option value="Selesai">Selesai</option>
+                        </select>
+
+                        <!-- EXPORT TO EXCEL BUTTON -->
+                        <button onclick="exportStatusExcel()" class="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm transition">
+                            <i class="fa-solid fa-file-excel text-green-300 text-sm"></i> Ekspor Excel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-600">
+                        <thead class="bg-slate-50 text-slate-700 font-bold uppercase tracking-wider border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">ID & Waktu</th>
+                                <th class="p-3">Pelapor</th>
+                                <th class="p-3">Wilayah & RT/RW</th>
+                                <th class="p-3">Lokasi & Catatan</th>
+                                <th class="p-3">Timbangan (Kg)</th>
+                                <th class="p-3 text-center">Status</th>
+                                <th class="p-3 text-center">Foto Awal</th>
+                                <th class="p-3 text-center">Bukti Penanganan (Foto Akhir)</th>
+                                <th class="p-3 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportTableBody" class="divide-y divide-slate-100">
+                            <!-- Injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: CAPAIAN & DATA CLOUD ==================== -->
+        <section id="sec-analytics" class="tab-content hidden space-y-6">
+            <!-- Top Summary Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-apple-whole"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 font-medium">Sampah Organik</div>
+                        <div id="statOrganikKg" class="text-xl font-extrabold text-slate-800">0.0 Kg</div>
+                        <span class="text-[10px] text-emerald-600 font-semibold">Kompostabilitas Tinggi</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 font-medium">Sampah Anorganik</div>
+                        <div id="statAnorganikKg" class="text-xl font-extrabold text-slate-800">0.0 Kg</div>
+                        <span class="text-[10px] text-blue-600 font-semibold">Daur Ulang Bank Sampah</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-dumpster"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 font-medium">Sampah Residu</div>
+                        <div id="statResiduKg" class="text-xl font-extrabold text-slate-800">0.0 Kg</div>
+                        <span class="text-[10px] text-amber-600 font-semibold">Ke TPA Jalupang</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-percent"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 font-medium">Rasio Pemilahan</div>
+                        <div id="statPilahRate" class="text-xl font-extrabold text-slate-800">0%</div>
+                        <span class="text-[10px] text-indigo-600 font-semibold">Terpilah dari Total</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Doughnut Chart -->
+                <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 text-sm mb-4 flex items-center justify-between">
+                        <span>Komposisi Jenis Sampah Terpilah</span>
+                        <i class="fa-solid fa-chart-pie text-slate-400"></i>
+                    </h3>
+                    <div class="relative h-64 flex items-center justify-center">
+                        <canvas id="chartKomposisi"></canvas>
+                    </div>
+                </div>
+
+                <!-- Bar Chart RW -->
+                <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 text-sm mb-4 flex items-center justify-between">
+                        <span>Timbangan Sampah Per Wilayah (Kg)</span>
+                        <i class="fa-solid fa-chart-column text-slate-400"></i>
+                    </h3>
+                    <div class="relative h-64">
+                        <canvas id="chartRwData"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulated Google Sheets Viewer (Pilar 2 Database) -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-green-100 text-green-700 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm">Replika Google Sheets Database (Sheet1)</h3>
+                            <p class="text-[11px] text-slate-500">Kolom A-H sesuai format baku Google Apps Script Cloud Storage GPS KENARI</p>
+                        </div>
+                    </div>
+                    
+                    <!-- EXPORT GOOGLE SHEETS REPLICA TO EXCEL -->
+                    <button onclick="exportSheetsExcel()" class="bg-emerald-700 hover:bg-emerald-800 text-white border border-emerald-800 px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-2 transition shadow-sm">
+                        <i class="fa-solid fa-download text-green-300"></i> Unduh Database Excel
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table id="googleSheetsTable" class="w-full text-left text-[11px] font-mono border-collapse border border-slate-200">
+                        <thead class="bg-slate-100 text-slate-700 font-bold">
+                            <tr>
+                                <th class="border border-slate-200 p-2">A: Timestamp</th>
+                                <th class="border border-slate-200 p-2">B: Nama Pelapor</th>
+                                <th class="border border-slate-200 p-2">C: Wilayah & RT/RW</th>
+                                <th class="border border-slate-200 p-2">D: Lokasi Detail</th>
+                                <th class="border border-slate-200 p-2 bg-emerald-50 text-emerald-800">E: Organik (Kg)</th>
+                                <th class="border border-slate-200 p-2 bg-blue-50 text-blue-800">F: Anorganik (Kg)</th>
+                                <th class="border border-slate-200 p-2 bg-amber-50 text-amber-800">G: Residu (Kg)</th>
+                                <th class="border border-slate-200 p-2">H: Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sheetsTableBody" class="divide-y divide-slate-200">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: EDUKASI PILAH SAMPAH ==================== -->
+        <section id="sec-edukasi" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-kenari-800 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Panduan Edukasi Pemilahan Sampah Rumah Tangga</h2>
+                        <p class="text-xs text-slate-500">Mewujudkan Kelurahan Nagasari Asri, Bersih, dan Sehat</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Organik -->
+                    <div class="bg-emerald-50 rounded-2xl p-5 border border-emerald-200">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg font-bold mb-3">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <h3 class="font-bold text-emerald-900 text-sm mb-1">1. Sampah Organik (Hijau)</h3>
+                        <p class="text-xs text-emerald-700 mb-3">Sampah basah yang mudah membusuk dan dapat diolah menjadi kompos pupuk organik.</p>
+                        <ul class="text-xs text-emerald-800 space-y-1.5 list-disc list-inside">
+                            <li>Sisa sayur & potongan buah</li>
+                            <li>Sisa nasi & lauk pauk</li>
+                            <li>Daun kering & ranting kecil</li>
+                            <li>Ampas kopi / teh</li>
+                        </ul>
+                    </div>
+
+                    <!-- Anorganik -->
+                    <div class="bg-blue-50 rounded-2xl p-5 border border-blue-200">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg font-bold mb-3">
+                            <i class="fa-solid fa-recycle"></i>
+                        </div>
+                        <h3 class="font-bold text-blue-900 text-sm mb-1">2. Sampah Anorganik (Kuning)</h3>
+                        <p class="text-xs text-blue-700 mb-3">Sampah kering bernilai ekonomi tinggi yang dapat didaur ulang di Bank Sampah.</p>
+                        <ul class="text-xs text-blue-800 space-y-1.5 list-disc list-inside">
+                            <li>Botol & gelas plastik</li>
+                            <li>Kardus, koran & kertas bekas</li>
+                            <li>Kaleng minuman & besi</li>
+                            <li>Kaca & botol sirup</li>
+                        </ul>
+                    </div>
+
+                    <!-- Residu -->
+                    <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200">
+                        <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg font-bold mb-3">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                        <h3 class="font-bold text-amber-900 text-sm mb-1">3. Sampah Residu (Merah)</h3>
+                        <p class="text-xs text-amber-700 mb-3">Sampah sulit didaur ulang yang wajib dibuang aman ke TPA Jalupang.</p>
+                        <ul class="text-xs text-amber-800 space-y-1.5 list-disc list-inside">
+                            <li>Popok sekali pakai & pembalut</li>
+                            <li>Tisu bekas & styrofoam</li>
+                            <li>Kemasan saset berlapis foil</li>
+                            <li>Puntung rokok & puntung plastik</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: PORTAL OPERATOR (ADMIN) ==================== -->
+        <section id="sec-operator" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Operator Form -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-amber-200 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-amber-100">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900">Input Timbangan & Update Status</h2>
+                            <p class="text-xs text-slate-500">Khusus Operator Pendataan & Monitoring Database Kelurahan Nagasari</p>
+                        </div>
+                    </div>
+
+                    <form onsubmit="handleOperatorUpdate(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Pilih ID Laporan Warga</label>
+                            <select id="opSelectReport" onchange="loadReportToOpForm(this.value)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 outline-none font-mono">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-emerald-800 mb-1">Organik (Kg)</label>
+                                <input type="number" step="0.1" id="opOrganik" min="0" placeholder="0.0" class="w-full px-3 py-2 rounded-xl border border-emerald-300 text-sm font-mono focus:ring-2 focus:ring-emerald-500 outline-none bg-emerald-50/50">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-blue-800 mb-1">Anorganik (Kg)</label>
+                                <input type="number" step="0.1" id="opAnorganik" min="0" placeholder="0.0" class="w-full px-3 py-2 rounded-xl border border-blue-300 text-sm font-mono focus:ring-2 focus:ring-blue-500 outline-none bg-blue-50/50">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-amber-800 mb-1">Residu (Kg)</label>
+                                <input type="number" step="0.1" id="opResidu" min="0" placeholder="0.0" class="w-full px-3 py-2 rounded-xl border border-amber-300 text-sm font-mono focus:ring-2 focus:ring-amber-500 outline-none bg-amber-50/50">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Status Penanganan Laporan</label>
+                            <select id="opStatus" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+                                <option value="Dalam Proses">Dalam Proses</option>
+                                <option value="Selesai">Selesai</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Bukti Bersih (Foto Akhir)</label>
+                            <div class="flex items-center gap-3">
+                                <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 border border-slate-300 px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-camera text-emerald-600"></i> Pilih Foto Akhir
+                                    <input type="file" id="fotoAfterInput" accept="image/*" class="hidden" onchange="previewImage(this, 'afterPreview')">
+                                </label>
+                                <span id="afterFileName" class="text-xs text-slate-500 italic">Belum ada foto akhir</span>
+                            </div>
+                            <div id="afterPreview" class="mt-2 hidden">
+                                <img src="" alt="Preview Foto Akhir" class="h-28 rounded-lg object-cover border border-emerald-300 shadow-sm cursor-pointer" onclick="openImageModal(this.src, 'Pratinjau Foto Akhir')">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-4 rounded-xl shadow transition text-sm">
+                            <i class="fa-solid fa-floppy-disk"></i> Simpan ke Google Sheets Cloud Database
+                        </button>
+                    </form>
+                </div>
+
+                <!-- SOP Generator Panel -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-900 text-sm border-b pb-2 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-green-600"></i> Template Response WA Operator (SOP)
+                    </h3>
+
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <div class="text-[11px] font-bold text-slate-700 mb-1">1. Respons Awal (Maks 15 Menit)</div>
+                            <div id="tmplGreeting" class="text-[11px] text-slate-600 font-mono whitespace-pre-wrap mb-2">
+Sampurasun/Halo Pak/Bu [Nama], terima kasih telah berpartisipasi dalam GPS KENARI. Laporan penumpukan sampah di [Lokasi] sudah kami terima dan sedang diteruskan ke tim lapangan Kelurahan Nagasari. Mohon tunggu sejenak ya. 🙏
+                            </div>
+                            <button onclick="copyToClipboard('tmplGreeting')" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-[11px] py-1 rounded-lg transition">
+                                <i class="fa-regular fa-copy"></i> Salin Pesan Respons
+                            </button>
+                        </div>
+
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <div class="text-[11px] font-bold text-slate-700 mb-1">2. Penutupan Laporan (Kirim Foto Bersih)</div>
+                            <div id="tmplClosing" class="text-[11px] text-slate-600 font-mono whitespace-pre-wrap mb-2">
+Alhamdulillah Pak/Bu, tumpukan sampah di lokasi tersebut sudah selesai ditangani oleh tim lapangan. Hatur nuhun sudah ikut menjaga kebersihan Kelurahan Nagasari! 🌳✨
+                            </div>
+                            <button onclick="copyToClipboard('tmplClosing')" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold text-[11px] py-1 rounded-lg transition">
+                                <i class="fa-regular fa-copy"></i> Salin Pesan Penutupan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 6: MANUAL BOOK & BROADCAST ==================== -->
+        <section id="sec-manual" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Petunjuk Teknis (Manual Book) & Broadcast WhatsApp</h2>
+                        <p class="text-xs text-slate-500">SOP Operasional dan Teks Siar Resmi untuk Warga Nagasari</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Format Resmi -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-emerald-800 uppercase">Pilihan 1: Format Resmi Kelurahan</span>
+                            <button onclick="copyToClipboard('bcResmi')" class="text-xs text-emerald-700 font-bold hover:underline">
+                                <i class="fa-regular fa-copy"></i> Salin Teks
+                            </button>
+                        </div>
+                        <div id="bcResmi" class="text-[11px] font-mono whitespace-pre-wrap text-slate-700 bg-white p-3 rounded-xl border border-slate-200 leading-relaxed">
+Sampurasun Warga Kelurahan Nagasari! 🌳✨
+
+Dalam rangka mewujudkan wilayah Kecamatan Karawang Barat yang bersih, sehat, dan bebas dari penumpukan sampah liar, Pemerintah Kelurahan Nagasari resmi meluncurkan program GPS KENARI (Gerakan Peduli Sampah Kelurahan Nagasari).
+
+Kini, warga dapat mengadukan tumpukan sampah dan memantau volume sampah terpilah secara digital, transparan, dan real-time!
+
+📱 Laporkan Kondisi Sampah Melalui Aplikasi Web Resmi atau WhatsApp Center: +62 897-8833-227
+
+Mari kita pilah sampah langsung dari rumah demi Nagasari yang asri! 🤝
+
+#GPSKENARI #NagasariBebasSampah #KarawangBarat
+                        </div>
+                    </div>
+
+                    <!-- Format Santai -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-emerald-800 uppercase">Pilihan 2: Format Santai untuk Grup RT/RW</span>
+                            <button onclick="copyToClipboard('bcSantai')" class="text-xs text-emerald-700 font-bold hover:underline">
+                                <i class="fa-regular fa-copy"></i> Salin Teks
+                            </button>
+                        </div>
+                        <div id="bcSantai" class="text-[11px] font-mono whitespace-pre-wrap text-slate-700 bg-white p-3 rounded-xl border border-slate-200 leading-relaxed">
+Sampurasun warga Kelurahan Nagasari! 👋 Lingkungan bersih, hidup jadi lebih sehat! 🌳
+
+Sekarang kalau di sekitar lingkungan kita ada penumpukan sampah liar, warga gak perlu bingung lagi mau lapor ke mana. Kelurahan kita sudah punya aplikasi pengaduan baru yang cepat dan langsung terhubung ke tim lapangan, namanya GPS KENARI!
+
+Yuk, kalau melihat ada sampah yang menumpuk terganggu, langsung laporkan ke WhatsApp Center kami di +62 897-8833-227.
+
+Hatur nuhun! 🙏✨
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Viewer Modal Popup -->
+        <div id="imageModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeImageModal()">
+            <div class="relative max-w-3xl w-full bg-slate-900 rounded-2xl overflow-hidden p-2 border border-slate-700" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between p-3 border-b border-slate-800">
+                    <h3 id="imageModalTitle" class="text-sm font-bold text-white">Pratinjau Foto</h3>
+                    <button onclick="closeImageModal()" class="text-slate-400 hover:text-white text-lg px-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="p-2 flex items-center justify-center min-h-[250px] max-h-[75vh]">
+                    <img id="imageModalImg" src="" alt="Full View" class="max-h-[70vh] w-auto object-contain rounded-lg">
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit Laporan -->
+        <div id="editModal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm overflow-y-auto" onclick="closeEditModal()">
+            <div class="relative max-w-lg w-full bg-white rounded-2xl shadow-xl overflow-hidden p-6 border border-slate-200 my-8" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square text-emerald-700"></i> Edit Data Laporan
+                    </h3>
+                    <button onclick="closeEditModal()" class="text-slate-400 hover:text-slate-600 text-lg px-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <form onsubmit="handleSaveEditReport(event)" class="space-y-3 text-xs">
+                    <input type="hidden" id="editReportId">
+                    
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">ID Laporan</label>
+                        <input type="text" id="editIdDisplay" disabled class="w-full px-3 py-2 rounded-xl bg-slate-100 font-mono text-slate-600 border border-slate-200">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Nama Pelapor</label>
+                        <input type="text" id="editNama" required class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="col-span-6">
+                            <label class="block font-semibold text-slate-700 mb-1">Wilayah</label>
+                            <select id="editWilayah" required class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none">
+                                <option value="Krajan Barat">Krajan Barat</option>
+                                <option value="Krajan Timur">Krajan Timur</option>
+                                <option value="Sadamalun I">Sadamalun I</option>
+                                <option value="Sadamalun III">Sadamalun III</option>
+                                <option value="Santiong Utara">Santiong Utara</option>
+                                <option value="Santiong Selatan">Santiong Selatan</option>
+                                <option value="Babakan Cianjur">Babakan Cianjur</option>
+                                <option value="Dipo Barat">Dipo Barat</option>
+                                <option value="Dipo Tengah">Dipo Tengah</option>
+                                <option value="Dipo Timur">Dipo Timur</option>
+                                <option value="Guro I">Guro I</option>
+                                <option value="Karang Anyar">Karang Anyar</option>
+                                <option value="Kepuh Wareng">Kepuh Wareng</option>
+                                <option value="Kepuh Tengah">Kepuh Tengah</option>
+                                <option value="Kepuh Nagasari">Kepuh Nagasari</option>
+                                <option value="Perum Green Garden">Perum Green Garden</option>
+                                <option value="Perum Bhakti Praja">Perum Bhakti Praja</option>
+                            </select>
+                        </div>
+                        <div class="col-span-3">
+                            <label class="block font-semibold text-slate-700 mb-1">RT</label>
+                            <input type="text" id="editRt" maxlength="3" required class="w-full px-3 py-2 rounded-xl border border-slate-300 font-mono outline-none">
+                        </div>
+                        <div class="col-span-3">
+                            <label class="block font-semibold text-slate-700 mb-1">RW</label>
+                            <input type="text" id="editRw" maxlength="3" required class="w-full px-3 py-2 rounded-xl border border-slate-300 font-mono outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Lokasi Detail / Patokan</label>
+                        <input type="text" id="editLokasi" required class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Kondisi Sampah & Catatan</label>
+                        <textarea id="editKondisi" rows="2" required class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="block font-semibold text-emerald-800 mb-1">Organik (Kg)</label>
+                            <input type="number" step="0.1" id="editOrganik" min="0" class="w-full px-2.5 py-1.5 rounded-xl border border-emerald-300 font-mono outline-none bg-emerald-50/50">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-blue-800 mb-1">Anorganik (Kg)</label>
+                            <input type="number" step="0.1" id="editAnorganik" min="0" class="w-full px-2.5 py-1.5 rounded-xl border border-blue-300 font-mono outline-none bg-blue-50/50">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-amber-800 mb-1">Residu (Kg)</label>
+                            <input type="number" step="0.1" id="editResidu" min="0" class="w-full px-2.5 py-1.5 rounded-xl border border-amber-300 font-mono outline-none bg-amber-50/50">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Status Penanganan</label>
+                        <select id="editStatus" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <option value="Dalam Proses">Dalam Proses</option>
+                            <option value="Selesai">Selesai</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-3 flex gap-2">
+                        <button type="button" onclick="closeEditModal()" class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold transition">
+                            Batal
+                        </button>
+                        <button type="submit" class="w-1/2 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold shadow transition">
+                            <i class="fa-solid fa-floppy-disk mr-1"></i> Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Konfirmasi Hapus -->
+        <div id="deleteModal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeDeleteModal()">
+            <div class="relative max-w-sm w-full bg-white rounded-2xl shadow-xl p-6 border border-slate-200 text-center" onclick="event.stopPropagation()">
+                <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xl font-bold mx-auto mb-3">
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 mb-1">Hapus Data Laporan?</h3>
+                <p class="text-xs text-slate-500 mb-5">Apakah Anda yakin ingin menghapus laporan <span id="deleteReportIdDisplay" class="font-bold text-slate-800"></span>? Data yang dihapus tidak dapat dikembalikan.</p>
+                
+                <div class="flex gap-2">
+                    <button onclick="closeDeleteModal()" class="w-1/2 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
+                        Batal
+                    </button>
+                    <button onclick="executeDeleteReport()" class="w-1/2 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl shadow transition">
+                        Ya, Hapus Data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL 1: QR CODE SCANNER CAMERA -->
+        <div id="qrScanModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeQrScanner()">
+            <div class="relative max-w-md w-full bg-white rounded-2xl shadow-2xl overflow-hidden p-6 border border-slate-200 text-center" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-qrcode text-emerald-700"></i> Pindai Barcode / QR Code Lokasi
+                    </h3>
+                    <button onclick="closeQrScanner()" class="text-slate-400 hover:text-slate-600 text-lg px-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-slate-600 mb-3">Arahkan kamera HP Anda ke Stiker Barcode/QR Code GPS KENARI yang terpasang di Pos Ronda atau Tempat Sampah.</p>
+                
+                <div id="qrReader" class="w-full bg-slate-900 rounded-xl overflow-hidden min-h-[250px] border border-slate-300"></div>
+
+                <div class="mt-4 flex justify-between items-center text-xs text-slate-500 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                    <span><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> Otomatis mengisi Lokasi & RT/RW</span>
+                    <button onclick="closeQrScanner()" class="text-red-600 font-bold hover:underline">Batal</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL 2: QR CODE GENERATOR & CETAK STIKER WARGA -->
+        <div id="qrAksesModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm overflow-y-auto" onclick="closeQrAksesModal()">
+            <div class="relative max-w-lg w-full bg-white rounded-2xl shadow-2xl overflow-hidden p-6 border border-slate-200 my-8" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-qrcode text-emerald-700"></i> Barcode / QR Code Akses GPS KENARI
+                    </h3>
+                    <button onclick="closeQrAksesModal()" class="text-slate-400 hover:text-slate-600 text-lg px-2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Tabs in QR Modal -->
+                <div class="flex border-b border-slate-200 mb-4 text-xs font-bold">
+                    <button id="qrTabWeb" onclick="switchQrTab('web')" class="flex-1 py-2 text-emerald-800 border-b-2 border-emerald-700">QR Web Aplikasi</button>
+                    <button id="qrTabWa" onclick="switchQrTab('wa')" class="flex-1 py-2 text-slate-500 hover:text-emerald-700">QR WA Center</button>
+                    <button id="qrTabSticker" onclick="switchQrTab('sticker')" class="flex-1 py-2 text-slate-500 hover:text-emerald-700">Stiker Lokasi RT/RW</button>
+                </div>
+
+                <!-- QR Display Container -->
+                <div id="printableQrArea" class="bg-gradient-to-b from-emerald-800 to-emerald-950 text-white p-6 rounded-2xl text-center space-y-3 shadow-md border border-emerald-600">
+                    <div class="inline-block bg-white text-emerald-900 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">
+                        Kelurahan Nagasari • Karawang Barat
+                    </div>
+                    <h4 id="qrCardTitle" class="text-lg font-extrabold text-yellow-300">SCAN UNTUK LAPOR SAMPAH</h4>
+                    <p id="qrCardSub" class="text-xs text-emerald-100">Aplikasi Pelayanan & Pengaduan Digital GPS KENARI</p>
+
+                    <!-- QR Canvas Box -->
+                    <div class="bg-white p-4 rounded-xl inline-block shadow-lg mx-auto border-4 border-yellow-400">
+                        <div id="qrcodeBox" class="flex items-center justify-center min-w-[180px] min-h-[180px]"></div>
+                    </div>
+
+                    <div id="qrCardFooter" class="text-[11px] font-mono text-emerald-200 pt-1">
+                        WA Center: +62 897-8833-227
+                    </div>
+                </div>
+
+                <!-- Selector for Stiker Lokasi RT/RW -->
+                <div id="stikerLocationControls" class="hidden mt-4 space-y-3 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                    <div class="font-bold text-slate-700">Pilih Wilayah & RT/RW untuk Cetak Stiker TPS:</div>
+                    <div class="grid grid-cols-12 gap-2">
+                        <select id="qrSelWilayah" onchange="generateQrStickerCode()" class="col-span-6 p-2 rounded-lg border border-slate-300">
+                            <option value="Krajan Barat">Krajan Barat</option>
+                            <option value="Krajan Timur">Krajan Timur</option>
+                            <option value="Sadamalun I">Sadamalun I</option>
+                            <option value="Santiong Utara">Santiong Utara</option>
+                            <option value="Guro I">Guro I</option>
+                            <option value="Karang Anyar">Karang Anyar</option>
+                        </select>
+                        <input type="text" id="qrSelRt" value="001" placeholder="RT" maxlength="3" onkeyup="generateQrStickerCode()" class="col-span-3 p-2 rounded-lg border border-slate-300 font-mono text-center">
+                        <input type="text" id="qrSelRw" value="001" placeholder="RW" maxlength="3" onkeyup="generateQrStickerCode()" class="col-span-3 p-2 rounded-lg border border-slate-300 font-mono text-center">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="mt-4 flex gap-2">
+                    <button onclick="printQrSticker()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-xl text-xs shadow transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-print"></i> Cetak / Simpan Poster QR (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Custom Toast Message Container -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script>
+        const TARGET_WA_PHONE = "628978833227"; // Phone WhatsApp Center
+
+        const DEFAULT_REPORTS = [
+            {
+                id: "KNR-1001",
+                timestamp: "2026-10-04 08:30",
+                nama: "Ibu Ratna",
+                wilayah: "Krajan Barat",
+                rt: "002",
+                rw: "001",
+                lokasi: "Samping Pos Ronda Gang Mukti",
+                kondisi: "Tumpukan plastik sisa belanjaan dan daun kering meluber",
+                organik: 12.5,
+                anorganik: 8.0,
+                residu: 3.5,
+                status: "Selesai",
+                fotoBefore: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=400&q=80",
+                fotoAfter: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                id: "KNR-1002",
+                timestamp: "2026-10-04 10:15",
+                nama: "Pak Budi Santoso",
+                wilayah: "Sadamalun I",
+                rt: "003",
+                rw: "002",
+                lokasi: "Dekat Lapangan Bulutangkis RW 002",
+                kondisi: "Puing kardus dan kemasan makanan menumpuk",
+                organik: 5.0,
+                anorganik: 14.2,
+                residu: 2.1,
+                status: "Dalam Proses",
+                fotoBefore: "https://images.unsplash.com/photo-1611284446314-60a55ac7deab?auto=format&fit=crop&w=400&q=80",
+                fotoAfter: null
+            },
+            {
+                id: "KNR-1003",
+                timestamp: "2026-10-03 14:20",
+                nama: "H. Hendra",
+                wilayah: "Guro I",
+                rt: "004",
+                rw: "005",
+                lokasi: "Pertigaan Jalan Utama Nagasari",
+                kondisi: "Sampah rumah tangga liar ditumpuk di bawah tiang listrik",
+                organik: 18.0,
+                anorganik: 9.5,
+                residu: 6.0,
+                status: "Selesai",
+                fotoBefore: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=400&q=80",
+                fotoAfter: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80"
+            }
+        ];
+
+        let reports = [];
+        let chartKomposisiInstance = null;
+        let chartRwInstance = null;
+
+        window.onload = function() {
+            loadInitialData();
+            setupLiveWaPreview();
+            renderAllViews();
+        };
+
+        function loadInitialData() {
+            const saved = localStorage.getItem('gps_kenari_reports');
+            if (saved) {
+                try {
+                    reports = JSON.parse(saved);
+                } catch(e) {
+                    reports = [...DEFAULT_REPORTS];
+                }
+            } else {
+                reports = [...DEFAULT_REPORTS];
+                saveData();
+            }
+        }
+
+        function saveData() {
+            localStorage.setItem('gps_kenari_reports', JSON.stringify(reports));
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-kenari-900', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeTabContent = document.getElementById(`sec-${tabName}`);
+            const activeTabBtn = document.getElementById(`tab-${tabName}`);
+
+            if (activeTabContent) activeTabContent.classList.remove('hidden');
+            if (activeTabBtn) {
+                activeTabBtn.classList.add('bg-kenari-900', 'text-white', 'shadow-sm');
+                activeTabBtn.classList.remove('text-slate-600');
+            }
+
+            if (tabName === 'analytics') {
+                renderCharts();
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const nama = document.getElementById('namaPelapor').value.trim();
+            const wilayah = document.getElementById('wilayahPelapor').value;
+            const rtInput = document.getElementById('rtPelapor').value.trim();
+            const rwInput = document.getElementById('rwPelapor').value.trim();
+            const lokasi = document.getElementById('lokasiDetail').value.trim();
+            const kondisi = document.getElementById('kondisiSampah').value.trim();
+
+            const rtFormatted = String(rtInput).padStart(3, '0');
+            const rwFormatted = String(rwInput).padStart(3, '0');
+
+            const newId = `KNR-${1001 + reports.length}`;
+            const now = new Date();
+            const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+            const beforeImgEl = document.querySelector('#beforePreview img');
+            const beforeImgSrc = beforeImgEl && beforeImgEl.src && !document.getElementById('beforePreview').classList.contains('hidden')
+                ? beforeImgEl.src
+                : "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=400&q=80";
+
+            const newReport = {
+                id: newId,
+                timestamp: timestamp,
+                nama: nama,
+                wilayah: wilayah,
+                rt: rtFormatted,
+                rw: rwFormatted,
+                lokasi: lokasi,
+                kondisi: kondisi,
+                organik: 0,
+                anorganik: 0,
+                residu: 0,
+                status: "Dalam Proses",
+                fotoBefore: beforeImgSrc,
+                fotoAfter: null
+            };
+
+            reports.unshift(newReport);
+            saveData();
+            renderAllViews();
+
+            // Construct WhatsApp Message Text with new tag & complete form fields
+            const waText = `#LAPOR SAMPAH _ GPS KENARI\n` +
+                           `Halo WhatsApp Center Kelurahan Nagasari (+628978833227),\n\n` +
+                           `Berikut adalah data pengaduan tumpukan sampah liar:\n` +
+                           `🆔 ID Laporan: ${newId}\n` +
+                           `👤 Nama Pelapor: ${nama}\n` +
+                           `🏡 Wilayah / Lingkungan: ${wilayah}\n` +
+                           `📍 RT / RW: RT ${rtFormatted} / RW ${rwFormatted}\n` +
+                           `🏠 Lokasi Detail / Patokan: ${lokasi}\n` +
+                           `📝 Kondisi Sampah & Catatan: ${kondisi}\n` +
+                           `⏰ Waktu Lapor: ${timestamp}\n\n` +
+                           `Mohon dapat segera ditindaklanjuti oleh tim kebersihan lapangan. Terima kasih! 🌳✨`;
+
+            const encodedMsg = encodeURIComponent(waText);
+            const waUrl = `https://wa.me/${TARGET_WA_PHONE}?text=${encodedMsg}`;
+
+            showToast("Laporan berhasil direkam & membuka WhatsApp Center (+628978833227)...", "success");
+
+            // Reset form
+            document.getElementById('formPengaduan').reset();
+            document.getElementById('beforePreview').classList.add('hidden');
+            document.getElementById('fotoFileName').innerText = "Belum ada foto dipilih";
+
+            // Open WhatsApp window
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 800);
+        }
+
+        function setupLiveWaPreview() {
+            const inputs = ['namaPelapor', 'wilayahPelapor', 'rtPelapor', 'rwPelapor', 'lokasiDetail', 'kondisiSampah'];
+            inputs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', updateWaPreview);
+            });
+        }
+
+        function updateWaPreview() {
+            const nama = document.getElementById('namaPelapor').value || '[Nama Anda]';
+            const wilayah = document.getElementById('wilayahPelapor').value || '[Pilih Wilayah]';
+            const rt = String(document.getElementById('rtPelapor').value || '001').padStart(3, '0');
+            const rw = String(document.getElementById('rwPelapor').value || '001').padStart(3, '0');
+            const lokasi = document.getElementById('lokasiDetail').value || '[Lokasi Detail]';
+            const kondisi = document.getElementById('kondisiSampah').value || '[Kondisi Sampah]';
+
+            const preview = `#LAPOR SAMPAH _ GPS KENARI\n` +
+                            `Halo WhatsApp Center Kelurahan Nagasari (+628978833227),\n\n` +
+                            `Berikut adalah data pengaduan tumpukan sampah liar:\n` +
+                            `🆔 ID Laporan: KNR-XXXX\n` +
+                            `👤 Nama Pelapor: ${nama}\n` +
+                            `🏡 Wilayah / Lingkungan: ${wilayah}\n` +
+                            `📍 RT / RW: RT ${rt} / RW ${rw}\n` +
+                            `🏠 Lokasi Detail / Patokan: ${lokasi}\n` +
+                            `📝 Kondisi Sampah & Catatan: ${kondisi}\n` +
+                            `⏰ Waktu Lapor: [Waktu Otomatis Sistem]\n\n` +
+                            `Mohon ditindaklanjuti. Terima kasih! 🌳✨`;
+
+            document.getElementById('waPreviewText').innerText = preview;
+        }
+
+        function previewImage(input, previewId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                const fileNameSpan = previewId === 'beforePreview' ? 'fotoFileName' : 'afterFileName';
+                document.getElementById(fileNameSpan).innerText = input.files[0].name;
+                reader.onload = function(e) {
+                    const imgContainer = document.getElementById(previewId);
+                    imgContainer.querySelector('img').src = e.target.result;
+                    imgContainer.classList.remove('hidden');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function renderAllViews() {
+            renderHeaderStats();
+            renderReportsTable();
+            renderSheetsTable();
+            populateOperatorSelect();
+        }
+
+        function renderHeaderStats() {
+            let totalKg = 0;
+            let completed = 0;
+            let organikKg = 0;
+            let anorganikKg = 0;
+            let residuKg = 0;
+            let pending = 0;
+
+            reports.forEach(r => {
+                const sum = (Number(r.organik)||0) + (Number(r.anorganik)||0) + (Number(r.residu)||0);
+                totalKg += sum;
+                organikKg += (Number(r.organik)||0);
+                anorganikKg += (Number(r.anorganik)||0);
+                residuKg += (Number(r.residu)||0);
+
+                if (r.status === 'Selesai') completed++;
+                if (r.status === 'Dalam Proses') pending++;
+            });
+
+            document.getElementById('statTotalKg').innerText = `${totalKg.toFixed(1)} Kg`;
+            document.getElementById('statCompletedReports').innerText = `${completed} / ${reports.length}`;
+            document.getElementById('badgePendingCount').innerText = pending;
+
+            document.getElementById('statOrganikKg').innerText = `${organikKg.toFixed(1)} Kg`;
+            document.getElementById('statAnorganikKg').innerText = `${anorganikKg.toFixed(1)} Kg`;
+            document.getElementById('statResiduKg').innerText = `${residuKg.toFixed(1)} Kg`;
+
+            const recycled = organikKg + anorganikKg;
+            const rate = totalKg > 0 ? Math.round((recycled / totalKg) * 100) : 0;
+            document.getElementById('statPilahRate').innerText = `${rate}%`;
+        }
+
+        function renderReportsTable() {
+            const filter = document.getElementById('filterStatus').value;
+            const tbody = document.getElementById('reportTableBody');
+            tbody.innerHTML = '';
+
+            const filtered = reports.filter(r => filter === 'ALL' || r.status === filter);
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-slate-400">Tidak ada data laporan ditemukan</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(r => {
+                const totalRowKg = ((Number(r.organik)||0) + (Number(r.anorganik)||0) + (Number(r.residu)||0)).toFixed(1);
+                const statusBadge = r.status === 'Selesai'
+                    ? `<span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full text-[10px] inline-flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Selesai</span>`
+                    : `<span class="bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full text-[10px] inline-flex items-center gap-1"><i class="fa-solid fa-spinner fa-spin"></i> Dalam Proses</span>`;
+
+                const fotoAwalHtml = r.fotoBefore
+                    ? `<img src="${r.fotoBefore}" alt="Foto Awal" onclick="openImageModal('${r.fotoBefore}', 'Foto Awal Laporan - ${r.id}')" class="w-12 h-12 object-cover rounded-lg border border-slate-200 cursor-pointer hover:scale-105 transition mx-auto shadow-sm" title="Klik untuk memperbesar">`
+                    : `<span class="text-[10px] text-slate-400 italic">Tidak ada</span>`;
+
+                const fotoAkhirHtml = r.fotoAfter
+                    ? `<img src="${r.fotoAfter}" alt="Foto Akhir" onclick="openImageModal('${r.fotoAfter}', 'Bukti Penanganan (Foto Akhir) - ${r.id}')" class="w-12 h-12 object-cover rounded-lg border border-emerald-300 cursor-pointer hover:scale-105 transition mx-auto shadow-sm" title="Klik untuk memperbesar">`
+                    : `<span class="text-[10px] text-amber-600 font-medium italic">Belum Selesai</span>`;
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="p-3">
+                        <div class="font-bold text-slate-800">${r.id}</div>
+                        <div class="text-[10px] text-slate-400">${r.timestamp}</div>
+                    </td>
+                    <td class="p-3 font-semibold text-slate-700">${r.nama}</td>
+                    <td class="p-3">
+                        <div class="font-bold text-slate-800 text-xs">${r.wilayah || 'Nagasari'}</div>
+                        <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded font-mono text-[10px]">RT ${r.rt || '001'} / RW ${r.rw || '001'}</span>
+                    </td>
+                    <td class="p-3">
+                        <div class="font-medium text-slate-800">${r.lokasi}</div>
+                        <div class="text-[11px] text-slate-500 italic truncate max-w-xs">${r.kondisi}</div>
+                    </td>
+                    <td class="p-3 font-mono">
+                        <div class="font-bold text-slate-800">${totalRowKg} Kg</div>
+                        <div class="text-[10px] text-slate-400">O:${r.organik||0} | A:${r.anorganik||0} | R:${r.residu||0}</div>
+                    </td>
+                    <td class="p-3 text-center">${statusBadge}</td>
+                    <td class="p-3 text-center">${fotoAwalHtml}</td>
+                    <td class="p-3 text-center">${fotoAkhirHtml}</td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <div class="flex items-center justify-center gap-1">
+                            <button onclick="openEditModal('${r.id}')" title="Edit Laporan" class="px-2 py-1 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-lg text-[11px] font-semibold transition">
+                                <i class="fa-solid fa-pen"></i> Edit
+                            </button>
+                            <button onclick="confirmDeleteReport('${r.id}')" title="Hapus Laporan" class="px-2 py-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg text-[11px] font-semibold transition">
+                                <i class="fa-solid fa-trash-can"></i> Hapus
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderSheetsTable() {
+            const tbody = document.getElementById('sheetsTableBody');
+            tbody.innerHTML = '';
+
+            reports.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50";
+                tr.innerHTML = `
+                    <td class="border border-slate-200 p-2 text-slate-500">${r.timestamp}</td>
+                    <td class="border border-slate-200 p-2 font-semibold text-slate-800">${r.nama}</td>
+                    <td class="border border-slate-200 p-2">${r.wilayah || 'Nagasari'} (RT ${r.rt||'001'} / RW ${r.rw||'001'})</td>
+                    <td class="border border-slate-200 p-2 text-slate-600">${r.lokasi}</td>
+                    <td class="border border-slate-200 p-2 bg-emerald-50 text-emerald-900 font-bold">${r.organik || 0}</td>
+                    <td class="border border-slate-200 p-2 bg-blue-50 text-blue-900 font-bold">${r.anorganik || 0}</td>
+                    <td class="border border-slate-200 p-2 bg-amber-50 text-amber-900 font-bold">${r.residu || 0}</td>
+                    <td class="border border-slate-200 p-2 font-semibold ${r.status === 'Selesai' ? 'text-emerald-600' : 'text-amber-600'}">${r.status}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function exportStatusExcel() {
+            const excelData = reports.map(r => ({
+                "ID Laporan": r.id,
+                "Waktu Lapor": r.timestamp,
+                "Nama Pelapor": r.nama,
+                "Wilayah": r.wilayah || 'Nagasari',
+                "RT": `RT ${r.rt || '001'}`,
+                "RW": `RW ${r.rw || '001'}`,
+                "Lokasi Detail": r.lokasi,
+                "Kondisi Sampah": r.kondisi,
+                "Organik (Kg)": r.organik || 0,
+                "Anorganik (Kg)": r.anorganik || 0,
+                "Residu (Kg)": r.residu || 0,
+                "Total Sampah (Kg)": (Number(r.organik||0) + Number(r.anorganik||0) + Number(r.residu||0)),
+                "Status": r.status,
+                "Ada Foto Awal": r.fotoBefore ? "Ya" : "Tidak",
+                "Ada Foto Bukti Akhir": r.fotoAfter ? "Ya" : "Tidak"
+            }));
+
+            const worksheet = XLSX.utils.json_to_sheet(excelData);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Status Laporan GPS KENARI");
+            XLSX.writeFile(workbook, `GPS_KENARI_Status_Laporan_${new Date().toISOString().slice(0,10)}.xlsx`);
+
+            showToast("Berhasil mengunduh Laporan Status ke format Excel!", "success");
+        }
+
+        function exportSheetsExcel() {
+            const excelData = reports.map(r => ({
+                "Timestamp": r.timestamp,
+                "Nama Pelapor": r.nama,
+                "RT/RW & Wilayah": `${r.wilayah || 'Nagasari'} (RT ${r.rt||'001'} / RW ${r.rw||'001'})`,
+                "Lokasi Detail": r.lokasi,
+                "Organik (Kg)": r.organik || 0,
+                "Anorganik (Kg)": r.anorganik || 0,
+                "Residu (Kg)": r.residu || 0,
+                "Status": r.status
+            }));
+
+            const worksheet = XLSX.utils.json_to_sheet(excelData);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Replika Google Sheets");
+            XLSX.writeFile(workbook, `GPS_KENARI_Database_Cloud_${new Date().toISOString().slice(0,10)}.xlsx`);
+
+            showToast("Berhasil mengunduh Replika Google Sheets ke format Excel!", "success");
+        }
+
+        function openImageModal(imgSrc, title = "Pratinjau Foto") {
+            document.getElementById('imageModalImg').src = imgSrc;
+            document.getElementById('imageModalTitle').innerText = title;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        function populateOperatorSelect() {
+            const select = document.getElementById('opSelectReport');
+            select.innerHTML = '';
+
+            reports.forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r.id;
+                opt.innerText = `[${r.id}] ${r.nama} - ${r.wilayah || 'Nagasari'} RT ${r.rt||'001'}/RW ${r.rw||'001'} (${r.status})`;
+                select.appendChild(opt);
+            });
+
+            if (reports.length > 0) {
+                loadReportToOpForm(reports[0].id);
+            }
+        }
+
+        function loadReportToOpForm(id) {
+            const report = reports.find(r => r.id === id);
+            if (!report) return;
+
+            document.getElementById('opOrganik').value = report.organik || 0;
+            document.getElementById('opAnorganik').value = report.anorganik || 0;
+            document.getElementById('opResidu').value = report.residu || 0;
+            document.getElementById('opStatus').value = report.status || "Dalam Proses";
+
+            // Update Template Preview
+            document.getElementById('tmplGreeting').innerText =
+                `Sampurasun Pak/Bu ${report.nama}, terima kasih telah berpartisipasi dalam GPS KENARI.\n` +
+                `Laporan penumpukan sampah di ${report.lokasi} (${report.wilayah || 'Nagasari'} RT ${report.rt||'001'}/RW ${report.rw||'001'}) sudah kami terima dan sedang diteruskan ke tim lapangan Kelurahan Nagasari. Mohon tunggu sejenak ya. 🙏`;
+        }
+
+        function handleOperatorUpdate(e) {
+            e.preventDefault();
+            const id = document.getElementById('opSelectReport').value;
+            const report = reports.find(r => r.id === id);
+
+            if (report) {
+                report.organik = parseFloat(document.getElementById('opOrganik').value) || 0;
+                report.anorganik = parseFloat(document.getElementById('opAnorganik').value) || 0;
+                report.residu = parseFloat(document.getElementById('opResidu').value) || 0;
+                report.status = document.getElementById('opStatus').value;
+
+                const afterImgEl = document.querySelector('#afterPreview img');
+                if (afterImgEl && afterImgEl.src && !document.getElementById('afterPreview').classList.contains('hidden')) {
+                    report.fotoAfter = afterImgEl.src;
+                } else if (report.status === 'Selesai' && !report.fotoAfter) {
+                    report.fotoAfter = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80";
+                }
+
+                saveData();
+                renderAllViews();
+                showToast(`Data timbangan & status ${id} berhasil diperbarui!`, "success");
+            }
+        }
+
+        function renderCharts() {
+            let totalOrganik = 0, totalAnorganik = 0, totalResidu = 0;
+            const wilMap = {};
+
+            reports.forEach(r => {
+                const org = Number(r.organik) || 0;
+                const anorg = Number(r.anorganik) || 0;
+                const res = Number(r.residu) || 0;
+
+                totalOrganik += org;
+                totalAnorganik += anorg;
+                totalResidu += res;
+
+                const w = r.wilayah || 'Krajan Barat';
+                wilMap[w] = (wilMap[w] || 0) + org + anorg + res;
+            });
+
+            if (chartKomposisiInstance) chartKomposisiInstance.destroy();
+            if (chartRwInstance) chartRwInstance.destroy();
+
+            // Doughnut Chart
+            const ctxPie = document.getElementById('chartKomposisi').getContext('2d');
+            chartKomposisiInstance = new Chart(ctxPie, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Organik (Kg)', 'Anorganik (Kg)', 'Residu (Kg)'],
+                    datasets: [{
+                        data: [totalOrganik, totalAnorganik, totalResidu],
+                        backgroundColor: ['#16a34a', '#2563eb', '#d97706'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            // Bar Chart Wilayah
+            const ctxBar = document.getElementById('chartRwData').getContext('2d');
+            const wilLabels = Object.keys(wilMap).length ? Object.keys(wilMap) : ['Krajan Barat', 'Sadamalun I', 'Guro I'];
+            const wilData = Object.keys(wilMap).length ? Object.values(wilMap) : [24, 21.3, 33.5];
+
+            chartRwInstance = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: wilLabels,
+                    datasets: [{
+                        label: 'Total Sampah Diangkut (Kg)',
+                        data: wilData,
+                        backgroundColor: '#0d5c3a',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        function copyToClipboard(elementId) {
+            const el = document.getElementById(elementId);
+            const text = el.innerText || el.textContent;
+
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast("Teks berhasil disalin ke clipboard!", "info");
+        }
+
+        let targetDeleteId = null;
+
+        function openEditModal(id) {
+            const report = reports.find(r => r.id === id);
+            if (!report) return;
+
+            document.getElementById('editReportId').value = report.id;
+            document.getElementById('editIdDisplay').value = report.id;
+            document.getElementById('editNama').value = report.nama || '';
+            document.getElementById('editWilayah').value = report.wilayah || 'Krajan Barat';
+            document.getElementById('editRt').value = report.rt || '001';
+            document.getElementById('editRw').value = report.rw || '001';
+            document.getElementById('editLokasi').value = report.lokasi || '';
+            document.getElementById('editKondisi').value = report.kondisi || '';
+            document.getElementById('editOrganik').value = report.organik || 0;
+            document.getElementById('editAnorganik').value = report.anorganik || 0;
+            document.getElementById('editResidu').value = report.residu || 0;
+            document.getElementById('editStatus').value = report.status || 'Dalam Proses';
+
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+        }
+
+        function handleSaveEditReport(e) {
+            e.preventDefault();
+            const id = document.getElementById('editReportId').value;
+            const report = reports.find(r => r.id === id);
+
+            if (report) {
+                report.nama = document.getElementById('editNama').value.trim();
+                report.wilayah = document.getElementById('editWilayah').value;
+                report.rt = String(document.getElementById('editRt').value.trim()).padStart(3, '0');
+                report.rw = String(document.getElementById('editRw').value.trim()).padStart(3, '0');
+                report.lokasi = document.getElementById('editLokasi').value.trim();
+                report.kondisi = document.getElementById('editKondisi').value.trim();
+                report.organik = parseFloat(document.getElementById('editOrganik').value) || 0;
+                report.anorganik = parseFloat(document.getElementById('editAnorganik').value) || 0;
+                report.residu = parseFloat(document.getElementById('editResidu').value) || 0;
+                report.status = document.getElementById('editStatus').value;
+
+                saveData();
+                renderAllViews();
+                closeEditModal();
+                showToast(`Laporan ${id} berhasil diperbarui!`, "success");
+            }
+        }
+
+        function confirmDeleteReport(id) {
+            targetDeleteId = id;
+            document.getElementById('deleteReportIdDisplay').innerText = id;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            targetDeleteId = null;
+            document.getElementById('deleteModal').classList.add('hidden');
+        }
+
+        function executeDeleteReport() {
+            if (!targetDeleteId) return;
+            
+            const idx = reports.findIndex(r => r.id === targetDeleteId);
+            if (idx !== -1) {
+                const removedId = reports[idx].id;
+                reports.splice(idx, 1);
+                saveData();
+                renderAllViews();
+                showToast(`Laporan ${removedId} berhasil dihapus!`, "info");
+            }
+            closeDeleteModal();
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const bgClass = type === 'success' ? 'bg-emerald-900 text-white' : 'bg-slate-900 text-white';
+
+            toast.className = `${bgClass} px-4 py-3 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2 pointer-events-auto transform transition duration-300 translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-info text-yellow-400"></i> <span>${message}</span>`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        let html5QrScanner = null;
+        let currentQrType = 'web';
+
+        function openQrAksesModal() {
+            document.getElementById('qrAksesModal').classList.remove('hidden');
+            switchQrTab('web');
+        }
+
+        function closeQrAksesModal() {
+            document.getElementById('qrAksesModal').classList.add('hidden');
+        }
+
+        function switchQrTab(type) {
+            currentQrType = type;
+            const btnWeb = document.getElementById('qrTabWeb');
+            const btnWa = document.getElementById('qrTabWa');
+            const btnSticker = document.getElementById('qrTabSticker');
+            const locControls = document.getElementById('stikerLocationControls');
+
+            [btnWeb, btnWa, btnSticker].forEach(b => {
+                b.classList.remove('text-emerald-800', 'border-b-2', 'border-emerald-700');
+                b.classList.add('text-slate-500');
+            });
+
+            if (type === 'web') {
+                btnWeb.classList.add('text-emerald-800', 'border-b-2', 'border-emerald-700');
+                locControls.classList.add('hidden');
+                document.getElementById('qrCardTitle').innerText = "SCAN UNTUK LAPOR SAMPAH";
+                document.getElementById('qrCardSub').innerText = "Aplikasi Pelayanan & Pengaduan Digital GPS KENARI";
+                renderQrCode(window.location.href || "https://gpskenari.nagasari.go.id");
+            } else if (type === 'wa') {
+                btnWa.classList.add('text-emerald-800', 'border-b-2', 'border-emerald-700');
+                locControls.classList.add('hidden');
+                document.getElementById('qrCardTitle').innerText = "SCAN LAPOR VIA WHATSAPP";
+                document.getElementById('qrCardSub').innerText = "Terhubung langsung ke WA Center Kelurahan Nagasari";
+                renderQrCode(`https://wa.me/${TARGET_WA_PHONE}?text=%23LAPOR%20SAMPAH%20_%20GPS%20KENARI`);
+            } else if (type === 'sticker') {
+                btnSticker.classList.add('text-emerald-800', 'border-b-2', 'border-emerald-700');
+                locControls.classList.remove('hidden');
+                generateQrStickerCode();
+            }
+        }
+
+        function generateQrStickerCode() {
+            const wil = document.getElementById('qrSelWilayah').value;
+            const rt = String(document.getElementById('qrSelRt').value || '001').padStart(3, '0');
+            const rw = String(document.getElementById('qrSelRw').value || '001').padStart(3, '0');
+
+            document.getElementById('qrCardTitle').innerText = `STIKER LAPOR TPS RT ${rt} / RW ${rw}`;
+            document.getElementById('qrCardSub').innerText = `Wilayah ${wil} • Kelurahan Nagasari`;
+
+            // Custom payload format readable by GPS KENARI QR Scanner
+            const payload = `GPSKENARI:${wil}:${rt}:${rw}:TPS RT ${rt} / RW ${rw}`;
+            renderQrCode(payload);
+        }
+
+        function renderQrCode(textData) {
+            const box = document.getElementById('qrcodeBox');
+            box.innerHTML = '';
+            
+            if (typeof QRCode !== 'undefined') {
+                new QRCode(box, {
+                    text: textData,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#073823",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } else {
+                box.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(textData)}" class="w-[180px] h-[180px] object-contain">`;
+            }
+        }
+
+        function openQrScanner() {
+            document.getElementById('qrScanModal').classList.remove('hidden');
+
+            if (typeof Html5QrcodeScanner !== 'undefined') {
+                if (!html5QrScanner) {
+                    html5QrScanner = new Html5QrcodeScanner("qrReader", { fps: 10, qrbox: { width: 220, height: 220 } }, false);
+                }
+                html5QrScanner.render(onScanSuccess, onScanFailure);
+            } else {
+                showToast("Membuka Kamera QR Scanner...", "info");
+                setTimeout(() => {
+                    const samplePayload = "GPSKENARI:Krajan Barat:002:001:Pos Ronda Gang Mukti";
+                    onScanSuccess(samplePayload);
+                }, 2000);
+            }
+        }
+
+        function closeQrScanner() {
+            document.getElementById('qrScanModal').classList.add('hidden');
+            if (html5QrScanner) {
+                try {
+                    html5QrScanner.clear();
+                } catch (e) {
+                    console.log("Scanner clear error", e);
+                }
+            }
+        }
+
+        function onScanSuccess(decodedText, decodedResult) {
+            closeQrScanner();
+            showToast("QR Code Berhasil Dipindai!", "success");
+
+            if (decodedText.startsWith("GPSKENARI:")) {
+                const parts = decodedText.split(":");
+                if (parts.length >= 5) {
+                    const wil = parts[1];
+                    const rt = parts[2];
+                    const rw = parts[3];
+                    const lokasi = parts[4];
+
+                    if (document.getElementById('wilayahPelapor')) document.getElementById('wilayahPelapor').value = wil;
+                    if (document.getElementById('rtPelapor')) document.getElementById('rtPelapor').value = rt;
+                    if (document.getElementById('rwPelapor')) document.getElementById('rwPelapor').value = rw;
+                    if (document.getElementById('lokasiDetail')) document.getElementById('lokasiDetail').value = lokasi;
+
+                    updateWaPreview();
+                    showToast(`Lokasi otomatis terisi: ${wil} RT ${rt}/RW ${rw}`, "success");
+                }
+            } else if (decodedText.startsWith("http")) {
+                showToast("Tautan terdeteksi: " + decodedText, "info");
+            } else {
+                if (document.getElementById('lokasiDetail')) {
+                    document.getElementById('lokasiDetail').value = decodedText;
+                }
+            }
+        }
+
+        function onScanFailure(error) {
+            // Quietly ignore scan frames
+        }
+
+        function printQrSticker() {
+            const printContent = document.getElementById('printableQrArea').outerHTML;
+            const win = window.open('', '', 'height=700,width=700');
+            win.document.write(`
+                <html>
+                    <head>
+                        <title>Cetak Stiker QR GPS KENARI</title>
+                        <script src="https://cdn.tailwindcss.com"><\/script>
+                        <style>
+                            body { font-family: sans-serif; display: flex; align-items: center; justify-center; height: 100vh; margin: 0; background: #fff; }
+                            .print-box { width: 100%; max-width: 450px; margin: auto; padding: 20px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="print-box">${printContent}</div>
+                        <script>
+                            setTimeout(() => { window.print(); window.close(); }, 800);
+                        <\/script>
+                    </body>
+                </html>
+            `);
+            win.document.close();
+        }
+    </script>
+</body>
+</html>
